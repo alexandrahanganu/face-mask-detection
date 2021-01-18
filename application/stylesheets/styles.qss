@@ -1,0 +1,22 @@
+QFrame
+{
+    border-image: url(./images/background.png) 0 0 0 0 stretch stretch;
+}
+
+QLabel
+{
+    font-family: Comfortaa;
+    font-size: 15px;
+    border-image: none;
+}
+
+QPushButton
+{
+    font-family: Montserrat;
+    font-size: 15px;
+}
+
+QPushButton:hover
+{
+    background-color: rgb(80, 200, 120);
+}

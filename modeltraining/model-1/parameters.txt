@@ -1,0 +1,25 @@
+last_layer = pre_trained_model.get_layer('mixed7')
+print('Last layer output shape :', last_layer.output_shape)
+last_output = last_layer.output
+x = tf.keras.layers.Flatten()(last_output)
+x = tf.keras.layers.Dense(1024, activation='relu')(x)
+x = tf.keras.layers.Dropout(0.3)(x)
+#The Final layer with 3 outputs for 3 categories
+x = tf.keras.layers.Dense(3, activation='softmax')(x)
+
+model = tf.keras.models.Model(inputs=pre_trained_model.input, outputs=x)
+model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['acc'])
+
+checkpoint = tf.keras.callbacks.ModelCheckpoint(
+    filepath='data/model-{epoch:03d}.ckpt',
+    save_weights_only=True,
+    monitor='val_acc',
+    mode='max',
+    save_best_only=True,
+    verbose=0)
+
+history = model.fit(X_train,
+                    Y_train,
+                    epochs=20,
+                    callbacks=[checkpoint],
+                    validation_split=0.1)

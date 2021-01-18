@@ -1,0 +1,1 @@
+According to our findings, it always returned that the picture was labeled with mask

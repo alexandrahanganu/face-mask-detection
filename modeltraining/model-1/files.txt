@@ -1,0 +1,5 @@
+with mask: 3,297 Files
+without mask: 717 Files
+wrong mask: 123 Files
+
+Different sizes, some very small
